@@ -18,19 +18,7 @@ class AthenaQueryExecute:
         self.athena_client=Clientmodules.createAthenaClient()
         self.s3_client=Clientmodules.createS3Client()
     
-    def execute_query(self, query_string):
-        # print("Inside execute query", query_string)
-        result_folder='athena_output'
-        result_config = {"OutputLocation": f"s3://{self.glue_databucket_name}/{result_folder}"}
-        query_execution_context = {
-            "Catalog": "AwsDataCatalog",
-        }
-        print(f"Executing: {query_string}")
-        response = self.athena_client.start_query_execution(
-            QueryString=query_string,
-            ResultConfiguration=result_config,
-            QueryExecutionContext=query_execution_context,
-        )
+
 
         query_execution_id = response['QueryExecutionId']
         query_status = self.athena_client.get_query_execution(QueryExecutionId=query_execution_id)
