@@ -1,0 +1,13 @@
+test.py
+.venv
+.env
+test_CORS.html
+script.js
+chatbot-bedrock/*
+ETL-test/*
+*.json
+*.csv
+*.parquet
+*.sql
+*.zip
+docs/*
